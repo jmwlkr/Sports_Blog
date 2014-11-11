@@ -38,5 +38,13 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user = User.find(params[:id])
+    if @user.destroy
+      flash[:notice] = "User was DESTROYED!"
+    else
+      flash[:alert] = "USER SURVIVED"
+    end
+    
+    redirect_to "/users"
   end
 end
