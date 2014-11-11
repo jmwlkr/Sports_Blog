@@ -32,7 +32,11 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(params[:user])
+    if @user.update(params[:user])
+      flash[:notice] = "Successfully Updated User"
+    else
+      flash[:alert] = "did not update user"
+    end
 
     redirect_to "/users"
   end
@@ -44,7 +48,7 @@ class UsersController < ApplicationController
     else
       flash[:alert] = "USER SURVIVED"
     end
-    
+
     redirect_to "/users"
   end
 end

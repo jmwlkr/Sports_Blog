@@ -2,3 +2,7 @@
 <a href=<%= "/users/#{ @user.id }/edit" %>>
   EDIT USER
 </a>
+<%= link_to(
+        ("DESTROY USER"),
+        "/users/#{ @user.id }",
+        method: :delete) %>
