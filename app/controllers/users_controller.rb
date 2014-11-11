@@ -5,9 +5,9 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(email: params[:email],
-                     password: params[:password],
-                     name: params[:name])
+    @user = User.new(email: params[:user][:email],
+                     password: params[:user][:password],
+                     name: params[:user][:name])
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "Signup Complete"
@@ -19,9 +19,11 @@ class UsersController < ApplicationController
   end
 
   def new
+    @user = User.new
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def show
