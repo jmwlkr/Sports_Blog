@@ -12,11 +12,11 @@ class User < ActiveRecord::Base
     foreign_key: :leader_id
 
   has_many :followers,
-    through: :followerships,
+    through: :leaderships,
     source: :follower
 
   has_many :leaders,
-    through: :leaderships,
+    through: :followerships,
     source: :leader
 
 end

@@ -9,9 +9,11 @@
     <ul>
     <% @leaders.each do |user| %>
       <li>
+        <% user.posts.each do |post| %>
         <%= render partial: "./posts/show",
-                   locals: { post: user.post,
+                   locals: { post: post,
                              current_user: @current_user } %>
+        <% end %>
       </li>
     <% end %>
     </ul>

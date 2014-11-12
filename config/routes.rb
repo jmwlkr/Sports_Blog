@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   delete 'sessions/destroy' => "sessions#destroy"
 
+  resources :followers, only: [:create, :destroy]
   resources :sessions, only: [:new, :create]
   resources :profiles
   resources :posts
