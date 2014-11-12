@@ -12,5 +12,13 @@ class FollowersController < ApplicationController
   end
 
   def destroy
+    @followerlink = Follower.find(params[:id])
+    @user = User.find(@followerlink.leader_id)
+    if @followerlink.destroy
+      flash[:notice] = "you are no longer following #{ @user.name }"
+    else
+      flash[:alert] = "something went sour"
+    end
+    redirect_to "/users"
   end
 end

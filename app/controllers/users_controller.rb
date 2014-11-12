@@ -31,7 +31,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    current_user
+    current_user # returns @current_user
+    if @current_user
+      @followerlink = Follower.where(leader_id: @user.id,
+                                  follower_id: @current_user.id).first
+    end
   end
 
   def update
