@@ -4,6 +4,19 @@
   <%= link_to(("Logout"),
       "/sessions/destroy",
       method: :delete) %>
+  <% if @leaders %>
+    <h3>Feed</h3>
+    <ul>
+    <% @leaders.each do |user| %>
+      <li>
+        <%= render partial: "./posts/show",
+                   locals: { post: user.post,
+                             current_user: @current_user } %>
+      </li>
+    <% end %>
+    </ul>
+  <% end %>
+
 <% else %>
   <%= render partial: "./sessions/new" %>
 <% end %>

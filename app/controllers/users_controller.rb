@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   def index
     @users = User.all
     current_user
+    if @current_user
+      @leaders = @current_user.leaders
+    end
   end
 
   def create
