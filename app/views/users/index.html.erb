@@ -1,6 +1,11 @@
 <h1>List of current Users</h1>
 <% if @current_user %>
   <h1><%= @current_user.name %></h1>
+  <%= link_to(("Logout"),
+      "/sessions/destroy",
+      method: :delete) %>
+<% else %>
+  <%= render partial: "./sessions/new" %>
 <% end %>
 
 <% if @users %>

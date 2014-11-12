@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def index
     @users = User.all
-    @current_user = User.find(session[:user_id])
+    current_user
   end
 
   def create
@@ -28,6 +28,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    current_user
   end
 
   def update

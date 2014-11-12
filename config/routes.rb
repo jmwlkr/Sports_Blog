@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :profile
+  delete 'sessions/destroy' => "sessions#destroy"
+
+  resources :sessions, only: [:new, :create]
+  resources :profiles
   resources :posts
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.

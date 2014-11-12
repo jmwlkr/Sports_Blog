@@ -1,0 +1,11 @@
+<h3><%= post.title %></h3>
+<p><%= post.text %></p>
+<small>By <%= post.user.name %></small>
+<% if current_user && current_user.id == post.user_id %>
+  <%= link_to(("DELETE"),
+  "/posts/#{ post.id }",
+  method: :delete) %>
+  <a href=<%= "/posts/#{ post.id }/edit" %>>
+    EDIT
+  </a>
+<% end %>

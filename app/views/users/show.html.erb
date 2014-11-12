@@ -1,8 +1,40 @@
 <h1><%= @user.name %></h1>
+
 <a href=<%= "/users/#{ @user.id }/edit" %>>
   EDIT USER
 </a>
+
 <%= link_to(
         ("DESTROY USER"),
         "/users/#{ @user.id }",
         method: :delete) %>
+
+<br>
+
+<h3><%= @user.name %>'s Profile</h3>
+
+<% if @user.profile %>
+
+  <%= render partial: "./profiles/show",
+             locals: { current_user: @current_user,
+                       profile: @user.profile } %>
+
+<% elsif @current_user && @user.id == @current_user.id %>
+
+  <a href="/profiles/new">Create Profile</a>
+
+<% end %>
+
+<br>
+
+<h3><%= @user.name %>'s Posts</h3>
+
+<% if @user.posts %>
+
+  <% @user.posts.each do |post| %>
+    <%= render partial: "./posts/show",
+              locals: { post: post,
+                        current_user: @current_user } %>
+  <% end %>
+
+<% end %>
